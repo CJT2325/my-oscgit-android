@@ -6,16 +6,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bill.mygitosc.R;
+import com.pnikosis.materialishprogress.ProgressWheel;
 
 /**
  * Created by liaobb on 2015/08/03.
  */
 public class TipInfoLayout extends FrameLayout {
-    private ProgressBar mPbProgressBar;
+    private ProgressWheel mPbProgressBar;
     private ImageView mTvTipState;
     private TextView mTvTipMsg;
 
@@ -41,7 +41,7 @@ public class TipInfoLayout extends FrameLayout {
 
     private void initView(Context context) {
         View view = LayoutInflater.from(context).inflate(R.layout.tip_info_layout, null, false);
-        mPbProgressBar = (ProgressBar) view.findViewById(R.id.tv_tip_loading);
+        mPbProgressBar = (ProgressWheel) view.findViewById(R.id.tv_tip_loading);
         mTvTipState = (ImageView) view.findViewById(R.id.tv_tip_state);
         mTvTipMsg = (TextView) view.findViewById(R.id.tv_tip_msg);
         setLoading();
