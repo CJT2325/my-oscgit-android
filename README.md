@@ -1,10 +1,10 @@
 # ScreenShot
-<img src="./screenshot/Screenshot_1.jpeg" width="30%" height="30%">
-<img src="./screenshot/Screenshot_2.jpeg" width="30%" height="30%">
-<img src="./screenshot/Screenshot_3.jpeg" width="30%" height="30%">
-<img src="./screenshot/Screenshot_4.jpeg" width="30%" height="30%">
-<img src="./screenshot/Screenshot_5.jpeg" width="30%" height="30%">
-<img src="./screenshot/Screenshot_6.jpeg" width="30%" height="30%">
+![图片描述](./screenshot/Screenshot_1.jpeg)
+![图片描述](./screenshot/Screenshot_2.jpeg)
+![图片描述](./screenshot/Screenshot_3.jpeg)
+![图片描述](./screenshot/Screenshot_4.jpeg)
+![图片描述](./screenshot/Screenshot_5.jpeg)
+![图片描述](./screenshot/Screenshot_6.jpeg)
  
 ### Git@OSC非官方android客户端
 本产品是Git@OSC非官方客户端，遵循Material Design设计原则，官方客户端界面实在是丑。
