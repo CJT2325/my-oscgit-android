@@ -28,7 +28,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
  */
 public class ProjectAdapter extends BaseStateRecyclerAdapter<Project> {
     private ImageLoader mImageLoader;
-    private ImageLoader.ImageListener listener;
+    //private ImageLoader.ImageListener listener;
     private boolean noPictureMode;
     private RequestQueue mQueue;
 
@@ -93,7 +93,7 @@ public class ProjectAdapter extends BaseStateRecyclerAdapter<Project> {
                 if (portraitURL.endsWith("portrait.gif")) {
                     projectHolder.iv_portrait.setImageResource(R.drawable.mini_avatar);
                 } else {
-                    listener = ImageLoader.getImageListener(projectHolder.iv_portrait,
+                    ImageLoader.ImageListener listener = ImageLoader.getImageListener(projectHolder.iv_portrait,
                             R.drawable.mini_avatar, R.drawable.mini_avatar);
                     mImageLoader.get(portraitURL, listener);
                 }

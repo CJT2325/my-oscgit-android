@@ -30,7 +30,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class EventAdapter extends BaseStateRecyclerAdapter<Event> {
     private ImageLoader mImageLoader;
     private boolean noPictureMode;
-    private ImageLoader.ImageListener listener;
+    //private ImageLoader.ImageListener listener;
 
    /* private View.OnClickListener eventClickListener = new View.OnClickListener() {
         @Override
@@ -95,7 +95,7 @@ public class EventAdapter extends BaseStateRecyclerAdapter<Event> {
                 if (portraitURL.endsWith("portrait.gif")) {
                     eventHolder.ev_portrait.setImageResource(R.drawable.mini_avatar);
                 } else {
-                    listener = ImageLoader.getImageListener(eventHolder.ev_portrait,
+                    ImageLoader.ImageListener listener = ImageLoader.getImageListener(eventHolder.ev_portrait,
                             R.drawable.mini_avatar, R.drawable.mini_avatar);
                     mImageLoader.get(portraitURL, listener);
                 }

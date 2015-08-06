@@ -16,6 +16,8 @@ import com.bill.mygitosc.common.LanguageFilter;
 import com.bill.mygitosc.ui.ViewLanguageProjectActivity;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -77,5 +79,35 @@ public class LanguageCardAdapter extends BaseRecyclerAdapter<Language> implement
             languageName = (TextView) itemView.findViewById(R.id.language_textview);
             languageThemeNum = (TextView) itemView.findViewById(R.id.languageThemeNum_textview);
         }
+    }
+
+    public void orderLanguageList(int orderIndicator) {
+        Comparator<Language> comparator = null;
+        switch (orderIndicator) {
+            case 0:
+                comparator = new Comparator<Language>() {
+                    @Override
+                    public int compare(Language l1, Language l2) {
+                        if (l1.getProjects_count() > l2.getProjects_count()) {
+                            return -1;
+                        } else {
+                            return 1;
+                        }
+                    }
+                };
+                break;
+            case 1:
+                comparator = new Comparator<Language>() {
+                    @Override
+                    public int compare(Language l1, Language l2) {
+                        return l1.getName().compareTo(l2.getName());
+                    }
+                };
+                break;
+            default:
+                break;
+        }
+        Collections.sort(mData, comparator);
+        notifyDataSetChanged();
     }
 }

@@ -1,17 +1,17 @@
 package com.bill.mygitosc.fragment;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -29,9 +29,8 @@ import com.bill.mygitosc.R;
 import com.bill.mygitosc.adapter.LanguageCardAdapter;
 import com.bill.mygitosc.bean.Language;
 import com.bill.mygitosc.cache.CacheManager;
-import com.bill.mygitosc.common.AppContext;
-import com.bill.mygitosc.utils.OscApiUtils;
 import com.bill.mygitosc.ui.BaseActivity;
+import com.bill.mygitosc.utils.OscApiUtils;
 import com.bill.mygitosc.widget.TipInfoLayout;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -43,7 +42,7 @@ import java.util.List;
 /**
  * Created by liaobb on 2015/7/30.
  */
-public class LanguageCardFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+public class LanguageCardFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
     private String LANGUAGE_CACHE_KEY = "language_list_cache";
 
     private SearchView searchView;
@@ -51,6 +50,8 @@ public class LanguageCardFragment extends Fragment implements SwipeRefreshLayout
     private RecyclerView recyclerView;
     private TipInfoLayout tipInfoLayout;
     private LanguageCardAdapter languageCardAdapter;
+
+    private int orderType = 0;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -129,6 +130,39 @@ public class LanguageCardFragment extends Fragment implements SwipeRefreshLayout
         initSearchView(searchItem);
     }
 
+    /*@Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int menuId = item.getItemId();
+        if (menuId == R.id.action_order_language) {
+            orderLanguageList();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }*/
+
+    private void orderLanguageList() {
+        AlertDialog.Builder builder = generateAlterDialog();
+        builder.setTitle(getString(R.string.title_order_language));
+        String orderItem[] = {getString(R.string.order_item_themenum), getString(R.string.order_item_name)};
+
+        final int oldOrderType = orderType;
+        builder.setSingleChoiceItems(orderItem, orderType, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                orderType = which;
+            }
+        });
+        builder.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (oldOrderType != orderType) {
+                    languageCardAdapter.orderLanguageList(orderType);
+                }
+            }
+        });
+        builder.show();
+    }
+
     private void initSearchView(MenuItem searchItem) {
         searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         searchView.setIconifiedByDefault(false);
@@ -145,7 +179,6 @@ public class LanguageCardFragment extends Fragment implements SwipeRefreshLayout
 
             @Override
             public boolean onQueryTextChange(String s) {
-                Log.d(AppContext.TAG, "onQueryTextChange:" + s);
                 languageCardAdapter.getFilter().filter(s);
                 return true;
             }

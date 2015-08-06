@@ -158,5 +158,9 @@
     <string name="update_head_title">更新于：%s</string>
     <string name="not_login_title">还未登录，登录成功后重试</string>
     <string name="logout_title">注销登录</string>
+    <string name="action_order_language">排序方式</string>
+    <string name="title_order_language">选择排序方式</string>
+    <string name="order_item_name">按语言名称</string>
+    <string name="order_item_themenum">按语言主题个数</string>
 
 </resources>

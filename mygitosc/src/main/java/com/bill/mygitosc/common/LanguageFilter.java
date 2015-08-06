@@ -1,6 +1,5 @@
 package com.bill.mygitosc.common;
 
-import android.util.Log;
 import android.widget.Filter;
 
 import com.bill.mygitosc.adapter.LanguageCardAdapter;
@@ -31,7 +30,6 @@ public class LanguageFilter extends Filter {
 
     @Override
     protected FilterResults performFiltering(CharSequence constraint) {
-        Log.d(AppContext.TAG, "performFiltering:" + constraint);
         filteredList.clear();
         final FilterResults results = new FilterResults();
         if (constraint.length() == 0) {

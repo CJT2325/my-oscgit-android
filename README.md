@@ -15,7 +15,7 @@
 - 使用谷歌Volley代替android-async-http和universal-image-loader
 - 增加切换主题功能
 
-最新代码请到https://github.com/BinJing/my-oscgit-android.git下载
+最新代码请到 https://github.com/BinJing/my-oscgit-android.git 下载
 
 ###已知bug
 1. ProgressBar,ProgressDialog等控件在android L平台下不会随着主题变化而变化

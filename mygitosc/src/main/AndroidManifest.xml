@@ -34,6 +34,7 @@
         <activity
             android:name=".ui.ViewSelfInfoActivity"
             android:label="@string/title_activity_view_self_info" />
+        <!-- android:launchMode="singleTop"-->
         <activity
             android:name=".ui.ViewProjectInfoActivity"
             android:label="@string/title_activity_view_project_info" />
